@@ -10,9 +10,9 @@ async def scan() -> None:
     scanner = await OfflineFindingScanner.create()
 
     print("Scanning for FindMy-devices...")
-    print()
+    
 
-    async for device in scanner.scan_for(10, extend_timeout=True):
+    async for device in scanner.scan_for(10000, extend_timeout=True):
         print(f"Device - {device.mac_address}")
         print(f"  Public key:   {device.adv_key_b64}")
         print(f"  Lookup key:   {device.hashed_adv_key_b64}")
