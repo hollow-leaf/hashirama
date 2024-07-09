@@ -2,6 +2,7 @@ import type { HardhatUserConfig } from "hardhat/config"
 import type { NetworkUserConfig } from "hardhat/types"
 // hardhat plugin
 import "@nomicfoundation/hardhat-toolbox-viem";
+import "@matterlabs/hardhat-zksync";
 
 import { config as dotenvConfig } from "dotenv"
 import { resolve } from "path"
@@ -49,11 +50,13 @@ function getChainConfig (chain: keyof typeof chainIds): NetworkUserConfig {
     accounts: [`0x${pk}`],
     chainId: chainIds[chain],
     url: jsonRpcUrl,
+    ethNetwork: "sepolia", 
+    zksync: true
   }
 }
 
 const config: HardhatUserConfig = {
-  defaultNetwork: "hardhat",
+  defaultNetwork: "zkSyncTestnet",
   networks: {
     hardhat: {
       chainId: chainIds.hardhat,
@@ -105,9 +108,17 @@ const config: HardhatUserConfig = {
       mainnet: process.env.ETHERSCAN_API_KEY || "",
       cardona: process.env.POLYGONSCAN_API_KEY || "",
       baseSepolia: process.env.BASESCAN_API_KEY || "",
-      zkSyncTestnet: process.env.ZKSCAN_API_KEY || "",
+      zkSyncTestnet: "NO_API_KEY",
     },
     customChains: [
+      {
+        network: "zkSyncTestnet",
+        chainId: chainIds["zkSyncTestnet"],
+        urls: {
+          apiURL: "https://zksync-sepolia.blockscout.com/api/v2",
+          browserURL: "https://zksync-sepolia.blockscout.com/",
+        },
+      }
     ]
   },
 

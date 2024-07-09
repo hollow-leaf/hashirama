@@ -18,10 +18,6 @@ contract POAPs is ERC721 , Ownable {
         baseURI = baseURI_;
     }
 
-    function switch_revealed() external onlyOwner{
-        revealed = !revealed;
-    }
-
     function airdrop (address[] memory addresses) public onlyOwner {
         for (uint i = 0; i < addresses.length; i++) {
             require(addressToTokenId[addresses[i]] == 0, "Already minted");

@@ -2,6 +2,8 @@ address/hardhat/*
 # hardhat toolbox
 cache
 artifacts
+artifacts-zk
+cache-zk
 factories
 typechain
 typechain/*
