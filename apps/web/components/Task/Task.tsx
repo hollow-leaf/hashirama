@@ -6,16 +6,17 @@ import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { taskByUserID } from "@/services/serverless/user";
 import { task } from "@/app/type";
+import { useAccount } from "wagmi";
 
 export function Task() {
-
+  const { address } = useAccount();
   const {ethUserInfo, userInfo, loginByJwt} = useLoginStore();
   const [tasks, setTasks] = useState<task[]>([])
   const [taskByDate, setTaskByDate] = useState<{tasks: task[], date: string}[]>([])
 
   useEffect(() => {
     initial()
-  }, [ethUserInfo])
+  }, [address])
 
   useEffect(() => {
     setTaskByDate([])
@@ -23,9 +24,8 @@ export function Task() {
   }, [tasks])
 
   async function initial() {
-    if(ethUserInfo.jwt != "") {
-        const t = await taskByUserID(jwtDecode(ethUserInfo.jwt).sub as string)
-        setTasks(t)
+    if(address) {
+        setTasks([])
     }
   }
 
