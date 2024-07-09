@@ -22,7 +22,11 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "dotenv": "16.3.1",
+    "eigenlayer-middleware": "github:layr-Labs/eigenlayer-middleware",
     "hardhat": "^2.22.0",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "eigenlayer-contracts": "github:Layr-Labs/eigenlayer-contracts"
   }
 }

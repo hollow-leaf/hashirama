@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-import "@eigenlayer/contracts/libraries/BytesLib.sol";
-import "@eigenlayer/contracts/core/DelegationManager.sol";
-import "@eigenlayer-middleware/src/unaudited/ECDSAServiceManagerBase.sol";
-import "@eigenlayer-middleware/src/unaudited/ECDSAStakeRegistry.sol";
-import "@openzeppelin-upgrades/contracts/utils/cryptography/ECDSAUpgradeable.sol";
-import "@eigenlayer/contracts/permissions/Pausable.sol";
-import {IRegistryCoordinator} from "@eigenlayer-middleware/src/interfaces/IRegistryCoordinator.sol";
-import "./IHelloWorldServiceManager.sol";
+import "../node_modules/eigenlayer-contracts/src/contracts/libraries/BytesLib.sol";
+import "../node_modules/eigenlayer-contracts/src/contracts/core/DelegationManager.sol";
+import "../node_modules/eigenlayer-middleware/src/ServiceManagerBase.sol";
+import "../node_modules/eigenlayer-middleware/src/unaudited/ECDSAStakeRegistry.sol";
+import "@openzeppelin/contracts-upgradeable/utils/cryptography/ECDSAUpgradeable.sol";
+import "../node_modules/eigenlayer-contracts/src/contracts/permissions/Pausable.sol";
+import {IRegistryCoordinator} from "../node_modules/eigenlayer-middleware/src/interfaces/IRegistryCoordinator.sol";
+import "./ITagServiceManager.sol";
 
 /**
  * @title Primary entrypoint for procuring services from HelloWorld.
