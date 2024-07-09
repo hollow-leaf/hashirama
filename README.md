@@ -39,12 +39,16 @@ Hashimaru consists of three main components:
 1. **Hashimaru Reward Token**:
    Hashimaru is a NFT like poap
 
-2. ****:
+2. **Hashimaru Airtag AVS**:
+    Store user hashed airtag public key,  this is a random and will change in apple rule
+
+3. **Hashimaru paricipant data**:
+    Every scan from organizer will publish to DA. And make this to a proof that people will know this guy stay and contribute in this event more.
    
 
 ### Build & Installation
 | Hashimaru is a monorepo managed using `turbo`. You can find the source code for each package in the `apps` and `packages` directory.
-- apps`
+- apps
   + `apps/web` is the web frontend. It built by frontend template, `wagmi` and `vite`
   + `apps/findapp`: use findmy to find everyone's airtag
 - `packages`
