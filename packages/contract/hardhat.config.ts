@@ -18,7 +18,8 @@ const chainIds = {
   goerli: 5,
   sepolia: 11155111,
   hardhat: 31337,
-  mainnet: 1
+  mainnet: 1,
+  zkSyncTestnet: 300,
 }
 
 // Ensure that we have all the environment variables we need.
@@ -37,6 +38,9 @@ function getChainConfig (chain: keyof typeof chainIds): NetworkUserConfig {
   switch (chain) {
     case "sepolia":
       jsonRpcUrl = "https://rpc.sepolia.org"
+      break
+    case "zkSyncTestnet":
+      jsonRpcUrl = "https://sepolia.era.zksync.dev"
       break
     default:
       jsonRpcUrl = `https://${chain}.infura.io/v3/${infuraApiKey}`
@@ -60,6 +64,7 @@ const config: HardhatUserConfig = {
     goerli: getChainConfig("goerli"),
     sepolia: getChainConfig("sepolia"),
     mainnet: getChainConfig("mainnet"),
+    zkSyncTestnet: getChainConfig("zkSyncTestnet"),
   },
   paths: {
     artifacts: "./artifacts",
@@ -100,6 +105,7 @@ const config: HardhatUserConfig = {
       mainnet: process.env.ETHERSCAN_API_KEY || "",
       cardona: process.env.POLYGONSCAN_API_KEY || "",
       baseSepolia: process.env.BASESCAN_API_KEY || "",
+      zkSyncTestnet: process.env.ZKSCAN_API_KEY || "",
     },
     customChains: [
     ]

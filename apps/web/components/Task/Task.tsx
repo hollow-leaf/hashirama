@@ -25,8 +25,7 @@ export function Task() {
 
   async function initial() {
     if(address) {
-        const t = await taskByUserID(jwtDecode(ethUserInfo.jwt).sub as string)
-        setTasks(t)
+        setTasks([])
     }
   }
 
